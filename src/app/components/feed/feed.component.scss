@@ -1,0 +1,17 @@
+.feed-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  min-height: 400px;
+  overflow: auto;
+
+  .panel {
+    margin-bottom: 20px;
+
+    .card-img-top {
+      max-width: 100%;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+}

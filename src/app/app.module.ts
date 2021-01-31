@@ -1,16 +1,36 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { FeedComponent } from './components/feed/feed.component';
+import { PostFormComponent } from './components/post-form/post-form.component';
+import { FeedService } from './services/feed.service';
+import { FeedWebService } from './web-services/feed.web.service';
+import { UploadImageComponent } from './components/post-form/components/upload-image/upload-image.component';
+import { DrawImageComponent } from './components/post-form/components/draw-image/draw-image.component';
+import { OrderByPipeModule } from './pipes/order-by-pipe.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FeedComponent,
+    PostFormComponent,
+    UploadImageComponent,
+    DrawImageComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    OrderByPipeModule
   ],
-  providers: [],
+  providers: [
+    HttpClientModule,
+    FeedService,
+    FeedWebService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

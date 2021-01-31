@@ -1,0 +1,15 @@
+<div class="feed-container">
+  <div *ngFor="let posts of feedService.postsObs | async | orderBy: 'desc': 'date'"
+    class="panel panel-default">
+    <img *ngIf="posts.image" [src]="posts.image" class="card-img-top">
+    <div class="panel-heading">
+      <strong>{{ posts.title }}</strong>
+    </div>
+    <div class="panel-body">{{ posts.message }}</div>
+    <div class="panel-footer">
+      <i>posted - {{ posts.date | date: 'medium' }}</i>
+      <br>
+      <button type="button" (click)="feedService.removePost(posts._id)">remove</button>
+    </div>
+  </div>
+</div>

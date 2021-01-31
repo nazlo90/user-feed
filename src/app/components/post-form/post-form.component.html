@@ -1,0 +1,50 @@
+<form (ngSubmit)="onSubmit()" #postForm="ngForm">
+  <div class="form-group">
+    <label for="date" class="form-label">Date</label>
+
+    <input class="form-control" type="datetime-local" [value]="postModel.date" id="date" name="date"
+      [(ngModel)]="postModel.date" required #date="ngModel">
+
+    <div [hidden]="date.valid || date.pristine"class="alert alert-danger">
+      Date is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="imageUrl" class="form-label">Upload or draw image</label>
+
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="drawImage" #showCanvasCheckbox
+        [checked]="showCanvas" (change)="onShowCanvasChange(showCanvasCheckbox.checked)">
+      <label class="form-check-label" for="drawImage">Draw picture</label>
+    </div>
+
+    <app-upload-image *ngIf="!showCanvas" [resetImageSubj]="resetImageSubj" (onImageChange)="postModel.image = $event"></app-upload-image>
+    <app-draw-image *ngIf="showCanvas" [saveImage]="saveImageSubj" (onImageSave)="postModel.image = $event"></app-draw-image>
+  </div>
+
+  <div class="form-group">
+    <label for="title">Title</label>
+
+    <input type="text" class="form-control" id="title" required placeholder="Title"
+      [(ngModel)]="postModel.title" name="title" #title="ngModel">
+
+    <div [hidden]="title.valid || title.pristine"class="alert alert-danger">
+      Title is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="title">Message</label>
+
+    <textarea class="form-control" id="message" placeholder="Message"
+      required [(ngModel)]="postModel.message" name="message" #message="ngModel">
+    </textarea>
+
+    <div [hidden]="message.valid || message.pristine"class="alert alert-danger">
+      Message is required
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-success" [disabled]="!postForm.form.valid">Add post</button>
+</form>
