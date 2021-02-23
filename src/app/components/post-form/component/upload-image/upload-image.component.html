@@ -1,0 +1,7 @@
+<input class="form-control form-control-lg" #image
+  id="image" type="file" accept="image/*" (change)="handleInputChange($event)">
+
+<div class="image-preview">
+  <img [src]="imageSrc">
+  <button *ngIf="imageSrc" (click)="resetImage()">remove</button>
+</div>

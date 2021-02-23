@@ -8,8 +8,8 @@ import { FeedComponent } from './components/feed/feed.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
 import { FeedService } from './services/feed.service';
 import { FeedWebService } from './web-services/feed.web.service';
-import { UploadImageComponent } from './components/post-form/components/upload-image/upload-image.component';
-import { DrawImageComponent } from './components/post-form/components/draw-image/draw-image.component';
+import { UploadImageComponent } from './components/post-form/component/upload-image/upload-image.component';
+import { DrawImageComponent } from './components/post-form/component/draw-image/draw-image.component';
 import { OrderByPipeModule } from './pipes/order-by-pipe.module';
 
 @NgModule({
